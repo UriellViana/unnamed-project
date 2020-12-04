@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 import React from 'react';
 import './App.css';
+=======
+import React from "react";
+<<<<<<< HEAD
+import "./App.css";
+>>>>>>> routes
 
 import {
   ApolloProvider,
@@ -47,6 +53,16 @@ function App() {
         <MyProjectsContainer />
       </div>
     </ApolloProvider>
+=======
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import "./App.css";
+
+function App() {
+  return (
+    <Router>
+      <Switch></Switch>
+    </Router>
+>>>>>>> routes
   );
 }
 

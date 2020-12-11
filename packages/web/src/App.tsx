@@ -124,6 +124,7 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+<<<<<<< HEAD
 function App() {
   return (
     <ApolloProvider client={client}>
@@ -344,6 +345,8 @@ const IS_LOGGED_IN = gql`
 `;
 >>>>>>> routes scope
 
+=======
+>>>>>>> fix app
 function App() {
   const { data, error, loading } = useQuery(IS_LOGGED_IN);
 

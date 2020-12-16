@@ -74,6 +74,14 @@ import './App.css';
 import React from "react";
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+import { gql, useQuery } from "@apollo/client";
+import Pages from "./pages";
+import Login from "./pages/Login";
+import Erros from "./erros";
+>>>>>>> Error Middleware
 import "./App.css";
 >>>>>>> routes
 
@@ -115,6 +123,7 @@ const authLink = new ApolloLink((operation, forward) => {
     });
   }
 
+<<<<<<< HEAD
   // Call the next link in the middleware chain.
   return forward(operation);
 });
@@ -145,6 +154,17 @@ import { ApolloProvider, ApolloClient, InMemoryCache, ApolloLink, createHttpLink
 import { createUploadLink } from 'apollo-upload-client';
 
 import UploadForm from './UploadForm';
+=======
+export default function App() {
+  const { data, error, loading } = useQuery(IS_LOGGED_IN);
+  console.log("APP DATA", data);
+  if (loading) return <p>Loading...</p>;
+
+  if (error) {
+    console.error(error);
+    return <Erros message={error.message} />;
+  }
+>>>>>>> Error Middleware
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:3001/graphql',
@@ -156,6 +176,7 @@ const uploadLink = createUploadLink({
   credentials: 'include',
 });
 
+<<<<<<< HEAD
 // const authLink = setContext((_, { headers }) => {
 //   // get the authentication token from local storage if it exists
 //   const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYWFmOWQ2YTBiODk2NTcwMjIyNTU1OCIsImlhdCI6MTYwNTE4NzA5NiwiZXhwIjoxNjA1MTg4ODk2fQ.I3M_qSK97WWPdlayaM4_5InAmoJwcLFIH686iKXWnXs';
@@ -399,6 +420,7 @@ function App() {
 =======
   return <Pages />;
 >>>>>>> routes scope
+=======
+  return <Pages />;
+>>>>>>> Error Middleware
 }
-
-export default App;

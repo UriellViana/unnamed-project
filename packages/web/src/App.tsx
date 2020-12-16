@@ -150,6 +150,7 @@ const client = new ApolloClient({
 import React from "react";
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import "./App.css";
 
 import {
@@ -201,6 +202,9 @@ function App() {
 =======
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 =======
+=======
+
+>>>>>>> Error Middleware
 import { gql, useQuery } from "@apollo/client";
 import Pages from "./pages";
 import Login from "./pages/Login";
@@ -244,6 +248,7 @@ const authLink = new ApolloLink((operation, forward) => {
     });
   }
 
+<<<<<<< HEAD
   // Call the next link in the middleware chain.
   return forward(operation);
 });
@@ -257,6 +262,17 @@ const client = new ApolloClient({
 <<<<<<< HEAD
 import { ApolloProvider, ApolloClient, InMemoryCache, ApolloLink, createHttpLink } from '@apollo/client';
 import { createUploadLink } from 'apollo-upload-client';
+=======
+export default function App() {
+  const { data, error, loading } = useQuery(IS_LOGGED_IN);
+  console.log("APP DATA", data);
+  if (loading) return <p>Loading...</p>;
+
+  if (error) {
+    console.error(error);
+    return <Erros message={error.message} />;
+  }
+>>>>>>> Error Middleware
 
 import UploadForm from './UploadForm';
 
@@ -265,6 +281,7 @@ const httpLink = createHttpLink({
   credentials: 'include'
 });
 
+<<<<<<< HEAD
 const uploadLink = createUploadLink({
   uri: 'http://localhost:3001/graphql',
   credentials: 'include',
@@ -491,6 +508,7 @@ function App() {
 =======
   return <Pages />;
 >>>>>>> routes scope
+=======
+  return <Pages />;
+>>>>>>> Error Middleware
 }
-
-export default App;

@@ -543,7 +543,6 @@ export default function App() {
           path="/projects"
           Component={Projects}
           middlewares={[AuthMiddleware]}
-          Parent={null}
         />
         <TradulabRouter
           path="/"

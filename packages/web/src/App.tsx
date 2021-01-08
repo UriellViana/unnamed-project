@@ -75,9 +75,12 @@ import './App.css';
 =======
 >>>>>>> Rebase Master
 import React from "react";
+<<<<<<< HEAD
 import "./App.css";
 >>>>>>> routes
 
+=======
+>>>>>>> Installs Packages
 import {
   ApolloProvider,
   ApolloClient,

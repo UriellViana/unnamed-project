@@ -1,94 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 import React from 'react';
-<<<<<<< HEAD
-import './App.css';
-=======
-=======
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
->>>>>>> formatting changes and some typings
-=======
->>>>>>> formatting changes and some typings
-=======
->>>>>>> formatting changes and some typings
-=======
-=======
->>>>>>> Create file resolver working at front-end and back-end without error treatment
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
-=======
->>>>>>> formatting changes and some typings
-=======
->>>>>>> formatting changes and some typings
-=======
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
->>>>>>> Corrigido erro de cors pra qualquer request
-=======
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
->>>>>>> formatting changes and some typings
-=======
->>>>>>> Fix merge errors, add tradulabErrors in the file resolver
-=======
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
->>>>>>> Corrigido erro de cors pra qualquer request
-<<<<<<< HEAD
->>>>>>> Corrigido erro de cors pra qualquer request
-=======
-=======
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-<<<<<<< HEAD
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
-=======
->>>>>>> Corrigido erro de cors pra qualquer request
-<<<<<<< HEAD
->>>>>>> Corrigido erro de cors pra qualquer request
-=======
-=======
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-<<<<<<< HEAD
->>>>>>> Create file resolver working at front-end and back-end without error treatment
-=======
-=======
->>>>>>> formatting changes and some typings
->>>>>>> formatting changes and some typings
-=======
->>>>>>> formatting changes and some typings
-=======
->>>>>>> Fix merge errors, add tradulabErrors in the file resolver
-=======
->>>>>>> Rebase Master
-import React from "react";
-<<<<<<< HEAD
-<<<<<<< HEAD
-import "./App.css";
->>>>>>> routes
-
-=======
->>>>>>> Installs Packages
-=======
-import "./App.css";
-
->>>>>>> Add packages]
-=======
->>>>>>> Merge Master
 import {
   ApolloClient,
   ApolloLink,
@@ -96,27 +6,11 @@ import {
   InMemoryCache,
 } from '@apollo/client';
 import { createUploadLink } from 'apollo-upload-client';
-<<<<<<< HEAD
-
-<<<<<<< HEAD
-import CardProfileContainer from './CardProfileContainer';
-import MyProjectsContainer from './MyProjectsContainer';
-=======
 import { Login, Profile, Projects } from './containers';
->>>>>>> Merge Master
 
 const uploadLink = createUploadLink({
-<<<<<<< HEAD
-<<<<<<< HEAD
   uri: 'http://localhost:3001/graphql',
   credentials: 'include',
-=======
-  uri: "http://localhost:3001",
-  credentials: "include",
->>>>>>> changes
-=======
-  uri: "http://localhost:3001/graphql",
->>>>>>> list files done
 });
 
 const authLink = new ApolloLink((operation, forward) => {
@@ -132,18 +26,15 @@ const authLink = new ApolloLink((operation, forward) => {
     });
   }
 
-<<<<<<< HEAD
   // Call the next link in the middleware chain.
   return forward(operation);
 });
 
-<<<<<<< HEAD
 const client = new ApolloClient({
   link: authLink.concat(uploadLink),
   cache: new InMemoryCache(),
 });
 
-<<<<<<< HEAD
 function App() {
   return (
     <ApolloProvider client={client}>
@@ -152,53 +43,6 @@ function App() {
         <Projects />
       </div> */}
       <Login />
-    </ApolloProvider>
-=======
-=======
-import UploadForm from "./UploadForm";
-import CardProfileContainer from "./CardProfileContainer";
-import { LoginContainer } from "./containers";
->>>>>>> Rebase Master
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-=======
-import CardProfileContainer from "./CardProfileContainer";
-import MyProjectsContainer from "./MyProjectsContainer";
->>>>>>> Add packages]
-
-const uploadLink = createUploadLink({
-  uri: "http://localhost:3001/graphql",
-  credentials: "include",
-});
-
-const authLink = new ApolloLink((operation, forward) => {
-  // Retrieve the authorization token from local storage.
-  const token = localStorage.getItem("token");
-
-  if (!["login", "createUser"].includes(operation.operationName)) {
-    // Use the setContext method to set the HTTP headers.
-    operation.setContext({
-      headers: {
-        authorization: token ? `Bearer ${token}` : "",
-      },
-    });
-  }
-
-  // Call the next link in the middleware chain.
-  return forward(operation);
-});
-
-const client = new ApolloClient({
-  link: authLink.concat(uploadLink),
-  cache: new InMemoryCache(),
-});
-
-function App() {
-  return (
-    <ApolloProvider client={client}>
-      <div style={{ display: "flex", justifyContent: "space-around" }}>
-        <CardProfileContainer />
-        <MyProjectsContainer />
-      </div>
     </ApolloProvider>
   );
 }

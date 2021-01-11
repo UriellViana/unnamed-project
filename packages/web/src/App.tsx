@@ -14,6 +14,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 import React from 'react';
+<<<<<<< HEAD
 import './App.css';
 =======
 =======
@@ -86,17 +87,23 @@ import "./App.css";
 import "./App.css";
 
 >>>>>>> Add packages]
+=======
+>>>>>>> Merge Master
 import {
-  ApolloProvider,
   ApolloClient,
-  InMemoryCache,
   ApolloLink,
+  ApolloProvider,
+  InMemoryCache,
 } from '@apollo/client';
 import { createUploadLink } from 'apollo-upload-client';
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 import CardProfileContainer from './CardProfileContainer';
 import MyProjectsContainer from './MyProjectsContainer';
+=======
+import { Login, Profile, Projects } from './containers';
+>>>>>>> Merge Master
 
 const uploadLink = createUploadLink({
 <<<<<<< HEAD
@@ -140,10 +147,11 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-        <CardProfileContainer />
-        <MyProjectsContainer />
-      </div>
+      {/* <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+        <Profile />
+        <Projects />
+      </div> */}
+      <Login />
     </ApolloProvider>
 =======
 =======

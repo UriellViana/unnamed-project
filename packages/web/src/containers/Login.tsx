@@ -1,25 +1,13 @@
 import React, { useState } from 'react';
-import { RouteProps, useHistory } from 'react-router-dom';
 import { gql, useLazyQuery } from '@apollo/client';
-import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import Joi from '@hapi/joi';
+import { Redirect, useHistory, RouteProps } from 'react-router-dom';
+import { LoginForm } from '../components';
 import TradulabBackground from '../images/tradulab-background.png';
-import { LoginForm, Loading } from '../../components';
-import { BLUE_700, BLACK_800 } from '../../constants/colors';
-
-const LOGIN = gql`
-  query loginUser($email: String!, $password: String!) {
-    login(payload: { email: $email, password: $password }) {
-      token
-      nickname
-      username
-      email
-      id
-    }
-  }
-`;
+import { makeStyles } from '@material-ui/core/styles';
+import { BLUE_700, BLACK_800 } from '../constants/colors';
+import Grid from '@material-ui/core/Grid';
+import Joi from '@hapi/joi';
+import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -51,16 +39,28 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
+const LOGIN = gql`
+  query loginUser($email: String!, $password: String!) {
+    login(payload: { email: $email, password: $password }) {
+      token
+      nickname
+      username
+      email
+      id
+    }
+  }
+`;
+
 interface LoginProps extends RouteProps {
   location: {
-    state: { redirect?: string };
+    state: { path?: string };
     pathname: string;
     search: string;
     hash: string;
   };
 }
 
-const Login: React.FC<LoginProps> = ({ location }) => {
+const Login: React.FC<any> = ({ location }) => {
   const [email, setEmail] = useState({ value: '', error: '' });
 
   const [password, setPassword] = useState({ value: '', error: '' });
@@ -106,24 +106,23 @@ const Login: React.FC<LoginProps> = ({ location }) => {
   };
 
   const handleRegister = () => {
-    history.push('/register');
+    history.push('./register');
   };
 
-  if (loading) return <Loading />;
+  if (loading) return <p>Loading...</p>;
 
-  if (error) {
-    history.push('/error');
-    return null;
-  }
+  if (error)
+    return (
+      <Redirect
+        to={{ pathname: '/error', state: { message: error.message } }}
+      />
+    );
 
   if (data && !error) {
     localStorage.setItem('token', data.login.token);
-    if (location.state.redirect) {
-      history.push(location.state.redirect);
-    } else {
-      history.push('/');
-    }
-    return null;
+    if (location.state.path) return <Redirect to={location.state.path} />;
+
+    return <Redirect to="./" />;
   }
 
   return (

@@ -1,6 +1,6 @@
-import React from "react";
-import { gql, useQuery } from "@apollo/client";
-import { useHistory } from "react-router-dom";
+import React from 'react';
+import { useHistory } from 'react-router-dom';
+import { gql, useQuery } from '@apollo/client';
 
 const IS_LOGGED_IN = gql`
   query isLoggedIn {
@@ -12,15 +12,20 @@ const IS_LOGGED_IN = gql`
   }
 `;
 
-const AuthMiddleware = (props: any) => {
+interface IAuthMiddleware {
+  children: React.ReactChild;
+  redirect: string;
+}
+
+const AuthMiddleware: React.FC = (props) => {
   const history = useHistory();
   const { error, loading } = useQuery(IS_LOGGED_IN);
-  const TOKEN = localStorage.getItem("token");
+  const TOKEN = localStorage.getItem('token');
 
   if (loading) return <p>Loading...</p>;
 
   if (error || !TOKEN) {
-    history.push("/login", { redirect: props.redirect });
+    history.push('/login', { redirect: props.redirect });
     return null;
   }
 

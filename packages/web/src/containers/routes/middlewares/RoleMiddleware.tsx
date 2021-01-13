@@ -36,7 +36,7 @@ const RoleMiddleware = (props: IRoleMiddleware) => {
     return null;
   }
 
-  return props.children;
+  return <React.Fragment>{props.children}</React.Fragment>;
 };
 
 export default RoleMiddleware;

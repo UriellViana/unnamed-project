@@ -1,5 +1,6 @@
 import React from 'react';
 import { RouteProps } from 'react-router-dom';
+import { Error } from '../pages';
 
 interface IError extends RouteProps {
   location: {
@@ -10,9 +11,8 @@ interface IError extends RouteProps {
   };
 }
 
-const Error: React.FC<IError> = ({ location }) => {
-  if (location && location.state) return <p> {location.state.message}</p>;
-  return <p>Internal Error</p>;
+const ErrorRouter: React.FC<IError> = (props) => {
+  return <Error {...props} />;
 };
 
-export default Error;
+export default ErrorRouter;

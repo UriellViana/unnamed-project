@@ -17,7 +17,7 @@ interface IAuthMiddleware {
   redirect: string;
 }
 
-const AuthMiddleware: React.FC = (props) => {
+const AuthMiddleware: React.FC<IAuthMiddleware> = (props) => {
   const history = useHistory();
   const { error, loading } = useQuery(IS_LOGGED_IN);
   const TOKEN = localStorage.getItem('token');
@@ -29,7 +29,7 @@ const AuthMiddleware: React.FC = (props) => {
     return null;
   }
 
-  return props.children;
+  return <React.Fragment>{props.children}</React.Fragment>;
 };
 
 export default AuthMiddleware;

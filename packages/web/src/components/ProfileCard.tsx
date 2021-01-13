@@ -1,11 +1,19 @@
 import React from 'react';
-import { Paper, Avatar, makeStyles, createStyles, Theme, Typography, Box } from '@material-ui/core';
+import {
+  Paper,
+  Avatar,
+  makeStyles,
+  createStyles,
+  Theme,
+  Typography,
+  Box,
+} from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     paper: {
-      display: "flex",
-      flexDirection: "column",
+      display: 'flex',
+      flexDirection: 'column',
       padding: theme.spacing(2, 2, 15, 2),
       width: theme.spacing(35),
     },
@@ -14,18 +22,18 @@ const useStyles = makeStyles((theme: Theme) =>
       height: theme.spacing(12),
     },
     avatar: {
-      alignSelf: "center",
+      alignSelf: 'center',
       marginBottom: theme.spacing(2),
     },
     box: {
       marginTop: theme.spacing(1),
-      justifyContent: "center",
-      display: "flex",
+      justifyContent: 'center',
+      display: 'flex',
     },
     city: {
       marginRight: theme.spacing(1),
     },
-  }),
+  })
 );
 
 interface ICardProfileProps {
@@ -34,7 +42,6 @@ interface ICardProfileProps {
   age: string;
   imageSrc: string;
 }
-
 
 const CardProfile: React.FC<ICardProfileProps> = ({
   username,
@@ -54,15 +61,11 @@ const CardProfile: React.FC<ICardProfileProps> = ({
       <Typography align="center" variant="h6">
         {username}
       </Typography>
-      <Box
-        className={classes.box}
-      >
+      <Box className={classes.box}>
         <Typography className={classes.city} variant="body1">
           {`${city},`}
         </Typography>
-        <Typography variant="body1">
-          {age}
-        </Typography>
+        <Typography variant="body1">{age}</Typography>
       </Box>
     </Paper>
   );

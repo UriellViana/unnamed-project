@@ -1,13 +1,8 @@
 import React, { useState } from 'react';
 import { RouteProps, useHistory } from 'react-router-dom';
 import { gql, useLazyQuery } from '@apollo/client';
-import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
 import Joi from '@hapi/joi';
-import TradulabBackground from '../images/tradulab-background.png';
-import { LoginForm, Loading } from '../../components';
-import { BLUE_700, BLACK_800 } from '../../constants/colors';
+import { LoginForm, Loading, Dashboard, TradulabTitle } from '../../components';
 
 const LOGIN = gql`
   query loginUser($email: String!, $password: String!) {
@@ -21,37 +16,7 @@ const LOGIN = gql`
   }
 `;
 
-const useStyles = makeStyles(() => ({
-  root: {
-    backgroundImage: `url(${TradulabBackground})`,
-    display: 'flex',
-    flexFlow: 'column wrap',
-    height: '100%',
-    padding: '2% 30% 2% 10%',
-    '@media (max-width: 800px)': {
-      padding: '2% 20% 2% 10%',
-    },
-    '@media (max-width: 500px)': {
-      padding: '2%',
-    },
-  },
-  title: {
-    backgroundColor: BLACK_800,
-    borderRadius: '100px',
-    color: 'white',
-    fontFamily: 'Open Sans',
-    fontSize: '100%',
-    textAlign: 'center',
-    '& span': {
-      color: BLUE_700,
-    },
-    '@media (max-width: 500px)': {
-      textAlign: 'center',
-    },
-  },
-}));
-
-interface LoginProps extends RouteProps {
+interface ILogin extends RouteProps {
   location: {
     state: { redirect?: string };
     pathname: string;
@@ -60,14 +25,12 @@ interface LoginProps extends RouteProps {
   };
 }
 
-const Login: React.FC<LoginProps> = ({ location }) => {
+const Login: React.FC<ILogin> = ({ location }) => {
   const [email, setEmail] = useState({ value: '', error: '' });
 
   const [password, setPassword] = useState({ value: '', error: '' });
 
   const [handleLogin, { loading, data, error }] = useLazyQuery(LOGIN);
-
-  const classes = useStyles();
 
   const history = useHistory();
 
@@ -127,10 +90,8 @@ const Login: React.FC<LoginProps> = ({ location }) => {
   }
 
   return (
-    <Grid className={classes.root}>
-      <Typography className={classes.title}>
-        Tradu<span>lab</span>
-      </Typography>
+    <Dashboard>
+      <TradulabTitle />
       <LoginForm
         email={email}
         password={password}
@@ -139,7 +100,7 @@ const Login: React.FC<LoginProps> = ({ location }) => {
         handleLogin={handleLogin}
         handleRegister={handleRegister}
       />
-    </Grid>
+    </Dashboard>
   );
 };
 

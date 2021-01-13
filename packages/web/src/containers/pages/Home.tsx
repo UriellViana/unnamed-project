@@ -13,6 +13,7 @@ const Home: React.FC<RouteProps> = () => {
         'https://i.pinimg.com/originals/b5/dc/a9/b5dca9fac1361023498d6cb66e4d8b13.jpg',
     },
   ];
+
   return (
     <TradulabHeader>
       <ProfileCard

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { RouteProps } from 'react-router-dom';
-
 import {
   Paper,
   makeStyles,
@@ -13,8 +12,7 @@ import {
   InputAdornment,
 } from '@material-ui/core';
 import { Search as SearchIcon } from '@material-ui/icons';
-import { ProjectsTable } from '../components';
-import { IMyProjects } from '../types/Projects';
+import { ProjectsTable } from '../../components';
 
 const rowsBackEnd = [
   { project: 'Jornadas', role: 'Desenvolvedor' },

@@ -42,10 +42,10 @@ const useStyles = makeStyles(() => ({
   },
 
   button: {
-    height: '10%',
+    height: '15%',
     color: BLACK_800,
     fontWeight: 600,
-    width: '30%',
+    width: '40%',
     '@media (max-width: 800px)': {
       width: '50%',
     },

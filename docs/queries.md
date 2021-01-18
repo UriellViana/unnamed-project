@@ -192,31 +192,19 @@ query listProjects {
 }
 ```
 
-# File
+##### File
 
-## List Files
-
-````gql
+```gql
 query listFiles {
   listFiles(projectId: "5fbf0c80212ed4a6a57c607b") {
     filename
-=======
-##### Project
-=======
-## Me
->>>>>>> Back-End Review
-
-```gql
-query me {
-  me {
-    _id
-    nickname
-    username
   }
 }
-````
+```
 
-# Role
+##### Project
+
+##### Role
 
 ```gql
 mutation invite {
@@ -226,33 +214,10 @@ mutation invite {
       userId: "5fd7e99d7ed16045a86cb55b"
       role: contributor
     }
-    projectId: "5fad9b0a7ed68959e2341a59"
-    userId: "5fad9ae37ed68959e2341a57"
-    role: manager
   ) {
     id
     role
     user {
-      nickname
-      username
-    }
-    project {
-      slug
-      name
-      owner
-      id
-      displayName
-    }
-    project {
-      id
-      displayName
-      nickname
-      username
-    }
-    project {
-      slug
-      name
-      owner
       nickname
       username
     }
@@ -268,16 +233,15 @@ mutation invite {
 
 mutation update {
   updateUserProjectRole(
-    projectId: "5fad9b0a7ed68959e2341a59"
-    userId: "5fad9ae37ed68959e2341a57"
-    role: manager
+    payload: {
+      projectId: "5fad9b0a7ed68959e2341a59"
+      userId: "5fad9ae37ed68959e2341a57"
+      role: manager
+    }
   ) {
     id
     role
-    user {
-      id
-      displayName
-    }
+    user
     project
     createdAt
     updatedAt
@@ -286,15 +250,11 @@ mutation update {
 
 mutation remove {
   removeUserFromProject(
-    projectId: "5fad9b0a7ed68959e2341a59"
-    userId: "5fad9ac07ed68959e2341a55"
-  ) {
-    id
-    username
-    displayName
-    createdAt
-    updatedAt
-  }
+    payload: {
+      projectId: "5fad9b0a7ed68959e2341a59"
+      userId: "5fad9ac07ed68959e2341a55"
+    }
+  )
 }
 ```
 
